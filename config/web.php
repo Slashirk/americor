@@ -1,12 +1,19 @@
 <?php
 
+use common\services\History\bootstrap\HistoryBootstrap;
+
+require(__DIR__ . DIRECTORY_SEPARATOR . 'bootstrap.php');
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        HistoryBootstrap::class
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
